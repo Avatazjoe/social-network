@@ -1,0 +1,107 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" type="image/png" href="{% static "favicon.ico" %}"/>
+    <link href='https://fonts.googleapis.com/css?family=Lily+Script+One&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    
+    <link rel="stylesheet" href="{% static "lib/css/font-awesome.min.css"%}">
+    <link rel="stylesheet" href="{% static "lib/css/prod.css"%}">
+    
+    <!--<link rel="stylesheet" href="{% static "lib/css/theme.css"%}">-->
+    <!--<link rel="stylesheet" href="{% static "lib/css/animate.css"%}">-->
+    <!--<link rel="stylesheet" href="{% static "lib/css/jquery.Jcrop.css"%}">-->
+    <!--<link rel="stylesheet" href="{% static "lib/css/sweetalert.css" %}">-->
+    <!--<link rel="stylesheet" href="{% static "css/style.css"%}">-->
+    
+    <script src="{% static "lib/js/jquery.min.js"  %}"></script>
+    <script src="{% static "lib/js/sweetalert.min.js" %}"></script>
+    <script src="{% static "lib/js/jquery.Jcrop.min.js" %}"></script>
+    <script src="{% static "lib/css/bootstrap.min.js"%}"></script>
+    
+    
+    <title>Reverse</title>
+</head>
+
+<body>
+    <!-- BARRE DE NAVIGATION -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <!-- NOM DU SITE -->
+            <div class="navbar-header">
+                <a class="navbar-brand" href=""><i class="fa fa-fw fa-refresh"></i> Reverse</a>
+            </div>
+            {% block header %}
+            <!-- BARRE DE RECHERCHE -->
+            <form class="navbar-form navbar-left" method='POST' role="search" id='search' action="search/"> {% csrf_token %}
+                 <div class="input-group">
+                    <span class="input-group-btn">
+                        <p class="btn btn-danger"><i class="fa fa-search fa-fw"></i>&nbsp;</p>
+                    </span>
+                    <input type="text"  name = 'name' class="form-control" placeholder="Chercher" autocomplete = "off">
+                </div>
+            </form>
+            <!-- LIENS -->
+            <ul class="nav navbar-nav navbar-right">
+            <!--    <li><a id="new_chat"><i class="fa fa-envelope fa-fw"></i>&nbsp; Mes messages</a></li> --> 
+                <li><a href="accounts/login"><i class="fa fa-user-times fa-fw"></i>&nbsp;Se déconnecter</a></li>
+            </ul>
+            {%endblock%}
+        </div>
+    </nav>
+
+    <!-- CONTENU DU SITE -->
+    {%block content%}
+    <div class="col-lg-offset-1 col-md-offset-0 col-lg-4 col-md-4 col-xs-4">
+        <h2 class="well text-center">Panel utilisateur <div class="fa fa-star"></div></h2>
+        <hr>
+        <div id="main"></div>
+    </div>
+   
+   
+    <div class="col-lg-4 col-md-5 col-xs-5">
+        
+        <div class="btn-group btn-group-justified" role="group">
+            <div class="btn-group">
+                <button  id='toSeePosts' class="btn btn-primary"><span class="fa fa-pencil"></span>&ensp;Poste</button>
+            </div>
+            
+             <div class="btn-group">
+                <button  id='toSeeProfil' class="btn btn-primary"><span class="fa fa-user"></span>&ensp;Profile</button>
+            </div>
+        </div>
+        
+    <div id='profil'></div>
+     
+    </div>
+    
+    <div id="friendChat" class="col-lg-2 col-md-3 col-xs-3"></div>
+
+    <div class="container chat-box"></div>
+    
+    {%endblock%}
+
+    
+    {% include "modals.html" with user=user %}
+
+
+    <script type="text/javascript" src="{% static "js/test/login.js"%}"></script>
+    <script type="text/javascript" src="{% static "js/test/votes.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/test/posts.js"%}"></script>
+    <script type="text/javascript" src="{% static "js/test/comments.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/test/profil.js"%}"></script>
+    <script type="text/javascript" src="{% static "js/test/search.js"%}"></script>
+    <script type="text/javascript" src="{% static "js/test/friends.js"%}"></script>
+    <script type="text/javascript" src="{% static "js/test/change_photo.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/test/tchat.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/test/behaviour.js" %}"></script>
+    <!--<script type="text/javascript" src="{% static "js/prod/prod.js" %}"></script>-->
+    
+</body>
+
+
+
+
+
+</html>

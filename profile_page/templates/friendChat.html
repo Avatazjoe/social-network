@@ -1,0 +1,55 @@
+{% load staticfiles %}
+            <div id="chat" class="panel panel-default">
+                <div class="panel-heading">
+                    <h1 class="panel-title text-center">Mes amis</h1>
+                </div>
+{% if friends %}
+{% for friend in friends %}
+                <a href="#" data-user-id="{{ friend.id }}" class="row">
+                      <div class="col-md-3">
+                          <img class="img-responsive img-circle" src="{{ friend.profil.photo.url }}" alt="...">
+                      </div>
+                      <div class="col-md-9">
+                        {{ friend.get_full_name }}
+                      </div>
+                </a>
+                <hr style="margin :0">
+{% endfor %}
+{% else %}
+                <div class="row">
+                    <img src="http://i.imgur.com/yIfFH.gif" class=" text-center col-md-8 col-md-offset-2 img-responsive" style="opacity:0.7">
+                </div>
+{% endif %}
+            </div>
+<div id="demande" class="panel panel-default">
+                <div class="panel-heading">
+                    <h1 class="panel-title text-center">Les demandes d'amis</h1>
+                </div>
+               <div> 
+{% if askingUsers %}
+{% for user in askingUsers %}
+                   <a href="#" data-user-id="{{ user.id }}" class="row">
+                         <div class="col-md-3">
+                             <img class="img-responsive img-circle" src="{{ user.profil.photo.url }}" alt="...">
+                         </div>
+                         <div class="col-md-9">
+                           {{ user.get_full_name }}
+                         </div>
+                   </a>
+                    <p class="col-md-12 text-center">
+                        <div class="btn-group" role="group">
+                           <button class="btn btn-warning" data-user-asking="{{ user.id  }}">Accepter</button>
+                           <button class="btn btn-info deleteAsk" data-id="{{ user.id }}">Refuser</button>
+                        </div>
+                    </p>
+ <hr>
+{% endfor %}
+{% else %}
+<hr>
+<div class="row">
+    <p class="col-md-offset-1 col-md-10 text-center">Vous n'avez pas de demandes d'amis pour l'instant</p>
+</div>
+<hr>
+{% endif %}
+                </div>
+</div>

@@ -1,0 +1,224 @@
+{% load staticfiles %}
+<div class="modal fade editMyPost">
+	<div class="modal-dialog modal-sm">
+        <form class="modal-content poster post-form-edit" method='POST'> {% csrf_token %}
+            	<div class="modal-header" style="background:orange">
+			    	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				    <h1 class="modal-title text-center"><i class="fa fa-pencil pull-left"></i> Edition</h1>
+			    </div>
+			<div class="modal-body">
+		        
+		        <div class="input-group-sm">
+                    <input type="text" class="form-control" name="title" placeholder="Titre du post">
+                </div>
+                <textarea type="textarea" rows='4' class="form-control" name='content' placeholder="Écrivez votre post"></textarea>
+            </div>
+			
+			<div class="modal-footer">
+                <button class="btn btn-sm btn-warning editPostButton" type="submit"><i class="fa fa-comment fa-fw"></i> &nbsp; Publier</button>
+			</div>
+        </form>
+	</div>
+</div>
+
+<div class="modal fade editMyCom">
+	<div class="modal-dialog modal-sm">
+        <form class="modal-content poster com-form-edit" method='POST'> {% csrf_token %}
+            	<div class="modal-header" style="background:orange">
+			    	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				    <h1 class="modal-title text-center"><i class="fa fa-pencil pull-left"></i> Edition</h1>
+			    </div>
+			<div class="modal-body">
+		        
+		        <div class="input-group-sm">
+                    <input type="text" class="form-control" name="com" placeholder="modifiez votre com">
+                </div>
+               
+            </div>
+			
+			<div class="modal-footer">
+                <button class="btn btn-sm btn-warning editComButton" type="submit"><i class="fa fa-comment fa-fw"></i> &nbsp; Publier</button>
+			</div>
+        </form>
+	</div>
+</div>
+
+<div class="modal fade signup" id="modal-id">
+	<div class="modal-dialog modal-lg">
+		<form class="modal-content" method ="post" action="/submitPhoto" enctype="multipart/form-data">
+            {% csrf_token %}
+			<div class="modal-body">
+			    
+			    
+			     <div class="row">
+                        	<div class="col-md-6">
+                        	    <div class="input-group">
+                        	        <span class="input-group-addon"><i class="fa fa-street-view fa-fw"></i></span>
+                        		    <input type="text" class="form-control" name="lastname" placeholder="Nom" value="{{user.last_name}}">
+                        	    </div>
+                        	</div>
+                        	<div class="col-md-6">
+                        	    <div class="input-group">
+                        		    <input type="text" class="form-control" name="firstname" placeholder="Prénom" value="{{user.first_name}}">
+                        	        <span class="input-group-addon"><i class="fa fa-street-view fa-fw"></i></span>
+                        	    </div>
+                        	</div>
+                        </div>
+                        <br>
+                        <div class="row">
+                        	<div class="col-md-6">
+                        	    <div class="input-group has-feedback">
+                        	        <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i></span>
+                        		    <input type="email" class="form-control" name="email" placeholder="Email" value="{{user.email}}">
+                        	    </div>
+                        	</div>
+                        	<div class="col-md-6">
+                        	    <div class="input-group has-feedback">
+                        		    <input type="text" class="form-control" name="username" id="username" placeholder="Nom d'utilisateur" value="{{user.username}}">
+                        	        <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
+                        	    </div>
+                        	</div>
+                        </div>
+                        <br>    
+                        <div class="row">
+                        	<div class="col-md-6">
+                        	    <div class="input-group">
+                        	        <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+                        		    <input type="password" class="form-control" name="password" placeholder="Mot de passe">
+                        	    </div>
+                        	</div>
+                        	<div class="col-md-6">
+                        	    <div class="input-group">
+                        		    <input type="password" class="form-control" name="password_confirm" placeholder="Confirmer mot de passe">
+                        	        <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+                        	    </div>
+                        	</div>
+                        </div>
+			    
+                    <h3>Choisissez une image :</h3><br>
+                    <img id="preview" class="img-responsive" src="{{user.profil.photo.url}}" alt="Votre image" />
+                    
+                   <div id="previewsRow">
+                        <div class="previewPane">
+                           <img src="{{user.profil.photo.url}}" alt="" class="previewOfPreview">
+                       </div>
+                       <div class="previewPane img-rounded">
+                           <img src="{{user.profil.photo.url}}" alt="" class="previewOfPreview">
+                       </div>
+                       <div class="previewPane img-circle">
+                           <img src="{{user.profil.photo.url}}" alt="" class="previewOfPreview">
+                       </div>
+                   </div>
+                   
+                   <input type="text" class="hidden" id="x1" name="x1">
+                   <input type="text" class="hidden" id="y1" name="y1">
+                   <input type="text" class="hidden" id="x2" name="x2">
+                   <input type="text" class="hidden" id="y2" name="y2">
+			</div>
+			
+			<div class="modal-footer">
+                <input type="file" id="imgUpload" class="pull-left" name="file">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+				<button type="submit" class="btn btn-primary">Changer la photo</button>
+			</div>
+        </form>
+	</div>
+</div>
+
+<div id="signup" class="modal fade signup">
+	<div class="modal-dialog">
+		<form method="POST" id="signUpModal" enctype="multipart/form-data" action="/accounts/signup/" role="form"> {% csrf_token %}
+    		<div class="modal-content">
+    			<div class="modal-header">
+    				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    				<h1 class="modal-title text-center"><i class="fa fa-fw fa-user-plus pull-left"></i> Étape 1</h1>
+    			</div>
+    			<div class="modal-body">
+                    	<h3 class="text-center">Informations minimales du compte</h3>
+                    	<p class="text-center">Ces informations sont nécessaires pour la création du compte.</p><br>
+                        <div class="row">
+                        	<div class="col-md-6">
+                        	    <div class="input-group">
+                        	        <span class="input-group-addon"><i class="fa fa-street-view fa-fw"></i></span>
+                        		    <input type="text" class="form-control" name="lastname" placeholder="Nom">
+                        	    </div>
+                        	</div>
+                        	<div class="col-md-6">
+                        	    <div class="input-group">
+                        		    <input type="text" class="form-control" name="firstname" placeholder="Prénom">
+                        	        <span class="input-group-addon"><i class="fa fa-street-view fa-fw"></i></span>
+                        	    </div>
+                        	</div>
+                        </div>
+                        <br>
+                        <div class="row">
+                        	<div class="col-md-6">
+                        	    <div class="input-group has-feedback">
+                        	        <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i></span>
+                        		    <input type="email" class="form-control" name="email" placeholder="Email">
+                        	    </div>
+                        	</div>
+                        	<div class="col-md-6">
+                        	    <div class="input-group has-feedback">
+                        		    <input type="text" class="form-control" name="username" id="username" placeholder="Nom d'utilisateur">
+                        	        <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
+                        	    </div>
+                        	</div>
+                        </div>
+                        <br>    
+                        <div class="row">
+                        	<div class="col-md-6">
+                        	    <div class="input-group">
+                        	        <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+                        		    <input type="password" class="form-control" name="password" placeholder="Mot de passe">
+                        	    </div>
+                        	</div>
+                        	<div class="col-md-6">
+                        	    <div class="input-group">
+                        		    <input type="password" class="form-control" name="password_confirm" placeholder="Confirmer mot de passe">
+                        	        <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+                        	    </div>
+                        	</div>
+                        </div>
+    			</div><br>
+    			<div class="modal-footer text-center">
+    				<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Abandonner</button>
+    				<button type="submit" class="btn btn-primary">Confirmer l'inscription</button>
+    			</div>
+    		</div>
+        </form>
+	</div>
+</div>
+
+
+
+
+
+
+<div id="signin" class="modal fade">
+	<div class="modal-dialog">
+        <form role="form" method='post' action="/">{% csrf_token %}
+    		<div class="modal-content">
+    			<div class="modal-header">
+    				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    				<h1 class="modal-title text-center"><i class="fa fa-sign-in pull-left"></i> Connexion</h1>
+    			</div>
+    			<div class="modal-body">
+                    <h3 class="text-center">Connectez vous</h3><br>
+                    <div class="input-group">
+            	        <span class="input-group-addon"><i class="fa fa-street-view fa-fw"></i></span>
+            		    <input type="text" class="form-control" name="username" placeholder="Nom d'utilisateur">
+            	    </div><br>
+            	    <div class="input-group">
+            	        <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+            		    <input type="password" class="form-control" name="password" placeholder="Mot de passe">
+            	    </div>
+    			</div><br>
+    			<div class="modal-footer text-center">
+    			    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Abandonner</button>
+    				<button type="submit" class="btn btn-danger"> Se connecter</button>
+    			</div>
+    		</div>
+        </form>
+	</div>
+</div>

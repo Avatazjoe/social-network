@@ -1,0 +1,32 @@
+<div class="row chat-window col-xs-5 col-md-3" id="chat_window_1" style="margin-left:10px;">
+    <div class="col-xs-12 col-md-12">
+    	<div class="panel panel-info">
+            <div class="panel-heading top-bar">
+                <div class="col-md-8 col-xs-8">
+                    <h3 class="panel-title"><span class="fa fa-comment"></span>&nbsp;{{ receiver.user.get_full_name }}</h3>
+                </div>
+                <div class="col-md-4 col-xs-4" style="text-align: right;">
+                    <a><span id="minim_chat_window" class="fa fa-minus icon_minim"></span></a>
+                    <a><span class="fa fa-times icon_close" data-id="chat_window_1"></span></a>
+                </div>
+            </div>
+            <div class="panel-body msg_container_base"
+                 data-receiver-id = "{{ receiver.id }}"
+                 data-user-id = "{{ user.id }}">
+                {% for message in messages %}
+                
+                {% include "submissions/message.html" with message=message %}
+                
+                {% endfor %}
+            </div>
+            <form class="panel-footer chat-form" method="POST" action="/chatBox/submit/{{ receiver.id }}"> {% csrf_token %}
+                <div class="input-group">
+                    <input id="btn-input" type="text" name="chat-input" class="form-control input-sm chat_input" placeholder="Écrivez votre message" autocomplete="off"/>
+                    <span class="input-group-btn">
+                        <button type="submit" class="btn btn-primary btn-sm" id="btn-chat">Envoyer</button>
+                    </span>
+                </div>
+            </form>
+		</div>
+    </div>
+</div>

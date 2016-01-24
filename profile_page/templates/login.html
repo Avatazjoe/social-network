@@ -1,0 +1,20 @@
+{% extends 'index.html' %}
+{%load staticfiles %}
+{%block header %}{% endblock %}
+{% block content %}
+    
+        <div id="main_panel" class="container panel col-md-6 col-md-offset-3 text-center" style="background:radial-gradient(white, #dadddd)">
+            <h1 id="main_title">
+                <i class="fa fa-refresh fa-spin fa-fw"></i>Reverse<br>
+            </h1>
+            <hr class="panel">    
+            <h4 id="main_desc">Ne vous souciez pas de votre compte, laissez vos amis vous décrire !</h4>
+            <hr class="panel">
+            <img class="img-circle img-responsive" style="margin:auto" src="/media/photos/default.png"></img>
+            <hr>
+            <button id="button-signup" class="btn btn-lg btn-primary">Inscrivez-vous</button>
+            <button id="button-signin" class="btn btn-lg btn-danger">Se connecter</button>
+            <hr>
+            
+        </div>
+{%endblock%}

@@ -1,0 +1,39 @@
+{% load staticfiles %}
+<div class="panel panel-default">
+    <div class="panel-body">
+        {% if isUserpage == 1  %}
+            <button id="supprAccount" class="btn btn-sm btn-danger pull-right">Supprimer mon compte <span class="fa fa-times"></span></button>
+        {% endif %}
+        <div class="col-md-5">
+            <img class="img-responsive img-rounded" src="{% static user.photo.url %}">
+            
+            {% if isUserpage == 1  %}
+               <p class="text-center"><br>
+                   <a class="btn btn-group-justified btn-warning" data-toggle="modal" href='#modal-id'><span class="fa fa-pencil"></span> Modifier</a>
+               </p>
+            {% endif %}
+        </div>
+        
+        <div class="col-md-7">
+            <h3>{{ user.user.get_full_name }}</h3>
+            <hr>
+            <h4>Caractéristiques :</h4>
+            <table class="table table-hover table-responsive" id="attributes-list">
+                <tbody>
+                    <hr>
+                {% for feature in features %}
+                    <label>{{feature.feature|title}}</label>
+                    <hr>
+                {% endfor %}
+                </tbody>
+            </table>
+            
+            <form action="" method="POST" role="form" data-add-feature-to = "{{user.user.id}}"> {% csrf_token %}
+                <div class="form-group">
+                    <input type="text" class="form-control" name = "feature" placeholder="Caractéristique">
+                </div>
+            </form>
+            
+        </div>
+    </div>
+</div>

@@ -1,0 +1,52 @@
+{% load staticfiles %}
+<div class="timestamp" style="display:none">{{ timestamp }}</div>
+<div class="panel panel-danger post" data-id="{{post.id}}">
+        <!-- LE CORPS DU POST -->
+        <div class="panel-body user-img">
+       {% if user == post.user.user %}
+           <div class="btn-group pull-right">
+               <button data-id="{{ post.id }}" class="btn btn-sm btn-info editPostModal"><span class="fa fa-pencil"></span></button>
+               <button id="supprPost" data-id="{{ post.id }}" class="btn btn-sm btn-danger"><span class="fa fa-times"></span></button>
+            </div>
+        {% endif %}
+            <!-- THUMBNAIL -->
+           <section class="row">
+                <header class="col-xs-4 col-md-4">
+                    <a data-user-id="{{ post.user.id }}">
+                        <img class="img-rounded img-responsive" src='{% static post.user.photo.url %}'>
+                        <h4 class="text-center">{{post.user.user.first_name}} {{post.user.user.last_name|first}}.</h4>
+                    </a>
+                </header>
+                <!-- TITRE -->
+                <section class="col-xs-8 col-md-8">
+                    <h3 class="postTitle text-center">{{post.title}}</h3>   <hr>
+                     <h3 >    <small>Envoyé le : {{ post.date|date:"d/m/Y" }} à {{post.date.hour|add:"2"}}h{{post.date.minute}}</small>
+                    </h3>
+                    
+                    <p class="postContent">{{ post.content }}</p><hr>
+                </section>
+           </section>
+        
+            <!-- LA BARRE CENTRALE-->
+            <ul data-id="{{post.id}" class="panel-footer nav nav-pills nav-justified barre-jaime" role="tablist">
+                <li role="presentation"><a data-id="{{post.id}}"><i class="fa fa-fw fa-comment"></i>
+                Commentaires <span class="badge" data-id="{{post.id}}">{{post.comment_set.count}}</span>
+                </a></li>
+            </ul>
+                
+            <!-- LES COMMENTAIRES -->
+            <section class="comment-section" data-id="{{post.id}}">{% include "comments.html" with post=post %}</section>
+        </div>
+        
+        <!-- BARRE POUR LÂCHER UN COMMENTAIRE -->
+        <div class="panel-footer" style="background:rgba(244, 124, 60, 0.1)">
+            <form class="comment-form" data-id="{{post.id}}" method='POST'> {% csrf_token %}
+                <div class="input-group">
+                    <input type="text" class="form-control comment-content" data-id = "{{post.id}}" name='content' placeholder="Écrivez votre commentaire" autocomplete = "off">
+                    <span class="input-group-btn">
+                        <button class="btn btn-warning" type="submit"><i class="fa fa-comment-o fa-fw"></i> Commenter </button>
+                    </span>
+                </div>
+            </form>
+        </div>
+    </div>

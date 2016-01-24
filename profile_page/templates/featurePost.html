@@ -1,0 +1,55 @@
+{% load staticfiles %}
+
+{% for featureLink, vote in tuples %}
+<div class="panel panel-default feature_post col-lg-6 col-md-12 col-xs-10">
+        <div class="panel-body">
+             <section class="row">
+                <section class="text-center">
+                    <h3 class="featureSay">{{ featureLink.owner }} {{ featureLink.feature }}</h3>
+                    <div class="row">
+                        <a data-user-id="{{ featureLink.owner.user.id }}" class="col-md-8 col-md-offset-2">
+                            <img class="img-circle " width="128" src="{% static featureLink.owner.photo.url %}">
+                        </a>
+                    </div>
+
+                    <small class="bar-description" data-id= "{{ featureLink.id }}">Ce post a une fiabilité de {{ featureLink.votes }}/{{ featureLink.featurevote.count }}</small>
+                    <div class="progress">
+                          <div data-id = "{{ featureLink.id }}" class="progress-bar progress-bar-striped active" 
+                               role="progressbar"
+                               data-votes="{{ featureLink.votes }}"
+                               data-approved-votes="{{ featureLink.featurevote.count }}"
+                               style="width:0%">
+                         </div>
+                    </div>
+                    
+                    
+                    <div class="row">
+                        <form class="col-md-6 reject-form">{% csrf_token %}
+                        {% if vote %}
+                            {% if vote.0.vote == -1 %}
+                                <button type="submit" data-id="{{ featureLink.id }}" class="reject btn btn-danger active"><i class="fa fa-fw fa-minus"></i> Non</button>
+                            {% else %}
+                                <button type="submit" data-id="{{ featureLink.id }}" class="reject btn btn-danger"><i class="fa fa-fw fa-minus"></i> Non</button>
+                            {% endif %}
+                        {% else %}
+                            <button type="submit" data-id="{{ featureLink.id }}" class="reject btn btn-danger"><i class="fa fa-fw fa-minus"></i> Non</button>
+                        {% endif %}
+                        </form>
+                        
+                        <form class="col-md-6 approve-form"> {% csrf_token %}
+                        {% if vote %}
+                            {% if vote.0.vote == 1 %}
+                                <button type="submit" data-id="{{ featureLink.id }}" class="approve btn btn-success active"><i class="fa fa-fw fa-plus"></i> Oui</button>
+                            {% else %}
+                                <button type="submit" data-id="{{ featureLink.id }}" class="approve btn btn-success"><i class="fa fa-fw fa-plus"></i> Oui</button>
+                            {% endif %}
+                        {% else %}
+                            <button type="submit" data-id="{{ featureLink.id }}" class="approve btn btn-success"><i class="fa fa-fw fa-plus"></i> Oui</button>
+                        {% endif %}
+                        </form>
+                    </div>
+                </section>
+           </section>
+        </div>
+</div>
+{% endfor %}

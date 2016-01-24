@@ -1,0 +1,21 @@
+{% load staticfiles %}
+
+    
+ <!-- Form pour crée un post -->
+        <form class="panel panel-primary poster post-form " method='POST'> {% csrf_token %}
+            <div class="panel-body">
+                    <div class="input-group-sm">
+                        <input type="text" class="form-control" name="title" placeholder="Titre du post">
+                    </div>
+                    <textarea type="textarea" rows='4' class="form-control" name='content' placeholder="Écrivez votre post"></textarea>
+            </div>
+            <div class="panel-footer" style="background:rgba(50,92,135, 0.1)">
+                <button class="btn btn-sm btn-warning" type="submit"><i class="fa fa-comment fa-fw"></i> &nbsp; Publier</button>
+            </div>
+        </form>
+
+    <br>
+    <div class="panel-group post-group">
+    
+    {% include "posts.html" with posts=posts user=user %}
+    </div>

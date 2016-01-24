@@ -1,0 +1,83 @@
+{% load staticfiles %}
+
+<section>
+    <button id="back" class="btn btn-lg btn-danger" type="submit"> <i class="fa fa-fw fa-backward"></i> Retour </button>
+    <hr>
+    <h3><i class="fa fa-fw fa-search"></i> Recherche de "{{search}}" : </h3>
+    <div class="row" id="search_friends">
+        <h3>Mes amis</h3>
+        {% if friends %}
+        {% for user in friends %}
+            <div class="col-lg-4 col-md-6">      
+            <section class="thumbnail">
+               
+               <!-- IMAGES -->
+                <span data-user-id="{{ user.id }}">
+                    <img  class="img-rounded img-responsive" src="{% static user.profil.photo.url %}">
+                </span>
+               <!-- FIN IMAGES -->
+               
+                <caption class="caption">
+                    <!-- DESCRIPTION -->
+                    <h5 class="text-center">{{ user.get_full_name }}</h5>
+                    <p class="text-center">{{ user.friendlink_set.all }}</p>
+       
+                    <!-- BOUTONS -->
+                    <div class="btn-group btn-group-justified" role="group" aria-label="...">
+                      
+                       <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-danger" data-user-to-del="{{ user.id }}"><i class="fa fa-minus"></i></button>
+                          </div>
+       
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-default send-message" data-profil-id="{{ user.profil.id }}"><i class="fa fa-envelope"></i></button>
+                        </div>
+                    
+                    </div>
+                    <!-- FIN BOUTONS -->
+                </caption>
+       
+            </section>
+        </div>
+        {% endfor %}
+        {% else %}
+        <p class="well text-center">Vous n'avez pas d'amis</p>
+        {% endif %}
+    </div>
+    <div class="row" id="search_other">
+        <h3>Les autres utilisateurs</h3>
+    {% for user2 in users %}
+        <div class="col-lg-4 col-md-6">      
+            <section class="thumbnail">
+               
+               <!-- IMAGES -->
+                <span data-user-id = "{{ user2.id }}">
+                    <img class="img-rounded img-responsive" src="{% static user2.profil.photo.url %}">
+                </span>
+               <!-- FIN IMAGES -->
+               
+                <caption class="caption">
+                    <!-- DESCRIPTION -->
+                    <h5 class="text-center">{{ user2.get_full_name }}</h5>
+                    <p class="text-center">{{ user.friendlink_set.all }}</p>
+       
+                    <!-- BOUTONS -->
+                    <div class="btn-group btn-group-justified" role="group" aria-label="...">
+                      
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-success" data-user-to-ask="{{ user2.id }}" ><i class="fa fa-plus"></i></button>
+                          </div>
+       
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-default send-message" data-profil-id="{{ user2.profil.id }}"><i class="fa fa-envelope"></i></button>
+                        </div>
+                    
+                    </div>
+                    <!-- FIN BOUTONS -->
+                </caption>
+       
+            </section>
+        </div>
+    {% endfor %}
+    </div>
+</section>

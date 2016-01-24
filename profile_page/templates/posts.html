@@ -1,0 +1,4 @@
+{% load staticfiles %}
+{% for post in posts %}
+    {% include "submissions/post.html" with post=post %}
+{%endfor%}

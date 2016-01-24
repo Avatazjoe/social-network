@@ -1,0 +1,395 @@
+/* NAVBAR */
+
+body
+{
+    padding-top:70px;
+}
+
+html, *
+{
+    font-size : 1.0rem;
+}
+
+
+#main_desc
+{
+    font-family: 'Lily Script One', cursive;
+    text-shadow: -1px -1px 1px white, 1px 1px 5px gray;
+    font-size:1.5em;
+}
+
+#main_title
+{
+    font-family: 'Lily Script One', cursive;
+    text-shadow: -2px -2px 0 white, 2px 2px 0 gray;
+    font-size:5em;
+    color:black;
+}
+
+.featureSay
+{
+    height:75px;
+}
+
+.fa-comment
+{
+    color:rgba(0, 0, 0, 0.3);
+}
+
+.media-body .nav-pills li:nth-child(2) a
+{
+    color:red;
+}
+
+.panel-group .panel
+{
+    margin-bottom:0px;
+    /*background-color: #ddd;*/
+    background-image: -webkit-linear-gradient(#FFFFFF, #EBEBEB);
+ 
+}
+
+.panel .panel-footer
+{
+border:1px solid #ddd;
+}
+
+#chat
+{
+    margin-bottom : 0;
+}
+
+.enabled .fa-circle
+{
+    color:green;
+}
+
+#notification
+{
+    position:fixed;
+    bottom:0;
+    width:25%;
+    right:30px;
+}
+
+.navbar .badge
+{
+    background:rgb(255, 50, 50);
+    color:white;
+}
+
+span.badge
+{
+    margin-top:-20px;
+    margin-left:-7px;
+    font-size:10px;
+    background:none;
+    color:rgba(0, 0, 0, 0.5);
+    box-shadow:1px 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+#search_friends .thumbnail, #search_other .thumbnail
+{
+    box-shadow : 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.img-tiny
+{
+    width:24px;
+    margin-right:12px;
+}
+
+[data-user-id]:hover
+{
+    cursor : pointer;
+}
+
+.comment-section .media-list
+{
+    padding:20px;
+    padding-bottom:0px;
+    margin-bottom:0px;
+}
+
+.crop 
+{
+    margin-left:auto;
+    margin-right:auto;
+    display: block;
+    width:180px;
+    height:180px;
+    overflow: hidden;
+    position: relative;
+}
+
+.crop-v
+{
+    margin-left:auto;
+    margin-right:auto;
+    display: block;
+    width:64px;
+    height:64px;
+    overflow: hidden;
+    position: relative;
+}
+
+.crop > img, .crop-v > img
+{
+    position: absolute;
+    left: -1000%;
+    right: -1000%;
+    margin: auto;
+    min-height: 100%;
+    min-width: 100%;
+    height:100%;
+}
+
+
+.navbar-brand
+{
+    font-family: 'Lily Script One', cursive;
+    font-size:2em;
+}
+
+
+.modal .modal-header
+{
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+    box-shadow : inset 0 0 8px -1px white;
+}
+
+.modal .modal-footer
+{
+    background:#eee;
+}
+
+#signup .modal-header h1, .modal-title { color:white; }
+#signup .modal-header
+{
+    background : #0088ff;
+}
+
+#signin .modal-header
+{
+    background : #ff5555;
+}
+
+:focus {outline : none;}
+
+.fadeInLeft, .fadeOutLeft, .fadeOutRight, .fadeInRight {
+  -moz-animation-duration: 0.4s;
+  -moz-animation-delay: 0s;
+  -webkit-animation-duration: 0.4s;
+  -webkit-animation-delay: 0s;
+  animation-duration: 0.4s;
+  animation-delay: 0s;
+}
+
+.fadeInDown
+{
+    -moz-animation-duration: 0.4s;
+  -moz-animation-delay: 0s;
+  -webkit-animation-duration: 0.4s;
+  -webkit-animation-delay: 0s;
+  animation-duration: 0.4s;
+  animation-delay: 0s;
+}
+
+.btn-success.active
+{
+    box-shadow : 0px 0px 10px rgb(0, 50, 0);
+}
+
+.btn-danger.active
+{
+    box-shadow : 0px 0px 10px rgb(180, 0, 0);
+}
+
+#attributes-list, #attributes-list label:hover { cursor:pointer; }
+
+.feature_post
+{
+    background-image: -webkit-linear-gradient(#FFFFFF, #EEE);
+    border : 5px solid white;
+    box-shadow : 0 0 0 1px #ddd inset;
+    margin : 0;
+}
+
+.post-form
+{
+    margin-bottom:0;
+}
+
+.navbar
+{
+    opacity : 0.9;
+    box-shadow: 0 0 30px 1px rgba(0, 0, 0, 0.3);
+}
+
+#previewsRow
+{
+    margin:auto;
+    text-align:center;
+}
+
+.previewPane
+{
+    display:inline-block;
+    width:100px;
+    height:100px;
+    overflow: hidden;
+    box-shadow : 0 0 20px 5px rgba(0, 0, 0, 0.1);
+}
+
+.jcrop-holder
+{
+    border: 1px solid #eee;
+    box-shadow : 0 0 20px 5px rgba(0, 0, 0, 0.1);
+    margin : auto;
+}
+
+
+/* Tchat */
+
+.chat-box .col-md-2, .chat-box .col-md-10{
+    padding:0;
+}
+.chat-box .panel{
+    margin-bottom: 0px;
+}
+.chat-window{
+    bottom:0;
+    position:fixed;
+    float:right;
+    margin-left:10px;
+}
+.chat-window > div > .panel{
+    border-radius: 5px 5px 0 0;
+}
+.icon_minim{
+    padding:2px 10px;
+}
+.msg_container_base{
+  background: #e5e5e5;
+  margin: 0;
+  padding: 0 10px 10px;
+  max-height:300px;
+  overflow-x:hidden;
+}
+.top-bar {
+  background: #666;
+  color: white;
+  padding: 10px;
+  position: relative;
+  overflow: hidden;
+}
+.msg_receive{
+    padding-left:0;
+    margin-left:0;
+}
+.msg_sent{
+    padding-bottom:20px !important;
+    margin-right:0;
+}
+.messages {
+  background: white;
+  padding: 10px;
+  border-radius: 2px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  max-width:100%;
+}
+.messages > p {
+    font-size: 13px;
+    margin: 0 0 0.2rem 0;
+  }
+.messages > time {
+    font-size: 11px;
+    color: #ccc;
+}
+.msg_container {
+    padding: 10px;
+    overflow: hidden;
+    display: flex;
+}
+.chat-box img {
+    display: block;
+    width: 100%;
+}
+.chat-box .avatar {
+    position: relative;
+}
+.base_receive > .avatar:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    border: 5px solid #FFF;
+    border-left-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+}
+
+.base_sent {
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+.base_sent > .avatar:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border: 5px solid white;
+    border-right-color: transparent;
+    border-top-color: transparent;
+    box-shadow: 1px 1px 2px rgba(black, 0.2);
+}
+
+.msg_sent > time{
+    float: right;
+}
+
+
+
+.msg_container_base::-webkit-scrollbar-track
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background-color: #F5F5F5;
+}
+
+.msg_container_base::-webkit-scrollbar
+{
+    width: 12px;
+    background-color: #F5F5F5;
+}
+
+.msg_container_base::-webkit-scrollbar-thumb
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: #555;
+}
+
+.btn-group.dropup{
+    position:fixed;
+    left:0px;
+    bottom:0;
+}
+
+h3, h4
+{
+    font-weight : 900;
+}
+
+.progress
+{
+    height : 25px;
+}
+
+.progress .progress-bar
+{
+    line-height : 30px;
+    font-size : 15px;
+    font-weight : 800;
+}

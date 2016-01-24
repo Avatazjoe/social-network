@@ -1,0 +1,32 @@
+{% load staticfiles %}
+<div class="timestamp" style="display:none">{{ timestamp }}</div>
+<div class="message_data"
+     style="display:none"
+     data-receiver-id="{{ message.receiver.id }}"
+     data-sender-id="{{ message.sender.id }}"></div>
+
+{% if message.receiver == user %}
+    <div class="row msg_container base_sent">
+        <div class="col-md-10 col-xs-10">
+            <div class="messages msg_sent">
+                <p>{{ message.content }}</p>
+                <time>{{ message.sender }} • {{ message.date }}</time>
+            </div>
+        </div>
+        <div class="col-md-2 col-xs-2 avatar">
+            <img src="{% static message.sender.photo.url %}" class=" img-responsive ">
+        </div>
+    </div>
+{% else %}
+    <div class="row msg_container base_receive">
+        <div class="col-md-2 col-xs-2 avatar">
+            <img src="{% static message.sender.photo.url %}" class=" img-responsive ">
+        </div>
+        <div class="col-md-10 col-xs-10">
+            <div class="messages msg_receive">
+                <p>{{ message.content }}</p>
+                <time datetime="2009-11-13T20:00">Moi • {{ message.date }}</time>
+            </div>
+        </div>
+    </div>
+{% endif %}

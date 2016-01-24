@@ -1,0 +1,27 @@
+{% load staticfiles %}
+<div class="timestamp" style="display:none">{{ timestamp }}</div>
+<li class="comment media " data-com-id="{{ comment.id}}" data-id="{{comment.post.id}}">
+        {% if user == comment.user.user %}
+        <div class="btn-group pull-right" role="group">
+            <button class="btn btn-sm edit_comment editComModal"><span class="fa fa-pencil"></span></button>
+            <button data-id="{{ comment.id }}" class="btn btn-sm suppr_comment"><span class="fa fa-times"></span></button>
+        </div>
+        {% endif %}
+        <!-- THUMBNAIL -->
+        <div class="media-left">
+            <a class="crop-v img-circle" data-user-id="{{ comment.user.id }}">
+                <img class="media-object" src="{% static comment.user.photo.url %}" alt="...">
+            </a>
+        </div>
+        <!-- CORPS -->
+        <div class="media-body">
+            <!-- NOM -->
+            <a data-user-id="{{ comment.user.id }}"><h4 class="media-heading">{{ comment.user }}</h4></a>
+            <!-- REPONSE -->
+            <p class="comContent">{{ comment }}</p>
+
+            
+            <hr>
+            
+        </div>
+</li>
