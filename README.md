@@ -15,7 +15,9 @@ Features
 A basic user registration system, the user gives minimal information about his account
 (firstname, lastname, email address, username, password).
 
-The availability and validity of each field is tested in live using an **AJAX** request.4
+The availability and validity of each field is tested in live using an **AJAX** request.
+
+![alt tag](https://media.giphy.com/media/26tn6msKjIk7xrt4Y/giphy.gif)
 
 ### Authentication
 
