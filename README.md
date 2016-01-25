@@ -17,7 +17,7 @@ A basic user registration system, the user gives minimal information about his a
 
 The availability and validity of each field is tested in live using an **AJAX** request.
 
-![alt tag](https://media.giphy.com/media/26tn6msKjIk7xrt4Y/giphy.gif)
+![alt tag](screenshots/available.gif)
 
 ### Authentication
 
