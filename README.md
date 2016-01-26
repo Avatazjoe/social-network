@@ -19,11 +19,13 @@ The availability and validity of each field is tested in live using an **AJAX** 
 
 ![alt tag](screenshots/available.gif)
 
-### Authentication
+### User & Authentication
 
 Once the user validated his account, he can login then log out from the website.
 
 Moreover, the user can change his profile picture easily (made with **JCrop extension** & Python standard library) on his profile page.
+
+<img src="screenshots/profile.png" width="600" />
 
 ### Posts & Comments
 
@@ -35,6 +37,9 @@ What's more, he can also remove and edit them live.
 ### Friend system & Chat
 
 Each user can add a new friend to his friends' list and then talk to them live (**long polling** made by hand as well).
+
+
+![alt tag](screenshots/livechat_opt.gif)
 
 
 ### Search engine
