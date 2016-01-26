@@ -23,9 +23,6 @@ The availability and validity of each field is tested in live using an **AJAX** 
 
 Once the user validated his account, he can login then log out from the website.
 
-![alt tag](screenshots/loginlogout_opt.gif)
-
-
 Moreover, the user can change his profile picture easily (made with **JCrop extension** & Python standard library) on his profile page.
 
 ### Posts & Comments
