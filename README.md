@@ -1,7 +1,5 @@
 # Reverse (Social network)
 
-![alt tag](screenshots/preview.png)
-
 Context
 ------
 
